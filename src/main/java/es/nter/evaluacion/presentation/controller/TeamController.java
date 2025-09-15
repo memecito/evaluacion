@@ -4,6 +4,7 @@ import es.nter.evaluacion.application.mappers.TeamMapper;
 import es.nter.evaluacion.application.services.impl.TeamServiceImpl;
 import es.nter.evaluacion.presentation.dto.equipos.TeamInputDto;
 import es.nter.evaluacion.presentation.dto.equipos.TeamOuputDto;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -30,7 +31,7 @@ public class TeamController {
     }
 
     @PostMapping
-    public ResponseEntity<TeamOuputDto> created(@RequestBody TeamInputDto teamInputDto) {
+    public ResponseEntity<TeamOuputDto> created(@Valid @RequestBody TeamInputDto teamInputDto) {
         return ResponseEntity.ok(
                 teamMapper.toDto(teamService.createTeam(teamMapper.toModel(teamInputDto)))
         );

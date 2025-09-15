@@ -5,6 +5,7 @@ import es.nter.evaluacion.application.services.impl.PlayerServiceImpl;
 import es.nter.evaluacion.domain.entity.Player;
 import es.nter.evaluacion.presentation.dto.jugadores.PlayerInputDto;
 import es.nter.evaluacion.presentation.dto.jugadores.PlayerOuputDto;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.apache.coyote.Response;
 import org.springframework.http.ResponseEntity;
@@ -35,7 +36,7 @@ public class PlayerController {
     }
 
     @PostMapping
-    public ResponseEntity<PlayerOuputDto> created(@RequestBody PlayerInputDto playerInputDto) {
+    public ResponseEntity<PlayerOuputDto> created(@Valid @RequestBody PlayerInputDto playerInputDto) {
         return ResponseEntity.ok(playerMapper.toDto(playerService.createPlayer(playerMapper.toModel(playerInputDto))));
     }
 

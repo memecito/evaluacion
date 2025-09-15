@@ -11,9 +11,9 @@ import java.util.List;
 @Setter
 public class TeamInputDto {
 
-    private Long id_equipo;
+    private Long id;
     @NotBlank
-    private String nombre_equipo;
+    private String name;
 
-    private List<Player> jugadores;
+    private List<Player> players;
 }

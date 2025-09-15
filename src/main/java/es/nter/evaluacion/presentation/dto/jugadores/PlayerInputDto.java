@@ -13,14 +13,14 @@ import java.util.List;
 @Setter
 public class PlayerInputDto {
 
-    private Long id_jugador;
+    private Long id;
     @NotBlank(message = "Campo NOMBRE requerido")
-    private String nombre;
+    private String name;
     @NotBlank(message = "Campo APELLIDOS requerido")
-    private String apellidos;
+    private String surname;
     @Min(value = 0,message = "debe introducir una edad validad")
     @Max(value = 99, message = "debe introducir una edad validad")
-    private int edad;
+    private int age;
     //TODO falta pedir la @
     @NotBlank(message = "Campo EMAIL requerido")
     private String email;
