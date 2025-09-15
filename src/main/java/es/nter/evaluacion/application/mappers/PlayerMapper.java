@@ -1,4 +1,4 @@
-package es.nter.evaluacion.mappers;
+package es.nter.evaluacion.application.mappers;
 
 import es.nter.evaluacion.domain.entity.Player;
 import es.nter.evaluacion.presentation.dto.jugadores.PlayerInputDto;

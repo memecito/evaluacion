@@ -1,0 +1,58 @@
+package es.nter.evaluacion.application.services.impl;
+
+import es.nter.evaluacion.application.mappers.PlayerMapper;
+import es.nter.evaluacion.application.services.PlayerService;
+import es.nter.evaluacion.domain.entity.Player;
+import es.nter.evaluacion.execption.NotFounException;
+import es.nter.evaluacion.execption.UnprocesableEntityException;
+import es.nter.evaluacion.repository.PlayerRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Objects;
+
+@Service
+@RequiredArgsConstructor
+public class PlayerServiceImpl implements PlayerService {
+
+    private final PlayerRepository playerRepository;
+    private final PlayerMapper playerMapper;
+    @Override
+    public List<Player> getAllPlayer() {
+        return playerRepository.findAll();
+    }
+
+    @Override
+    public Player getPlayerById(Long id) {
+        return playerRepository.findById(id).orElseThrow(
+                ()-> new NotFounException("Jugador con id: "+id+" no encontrado")
+        );
+    }
+
+    @Override
+    public Player getPlayerByName(String name) {
+        return playerRepository.findPlayerByName(name).orElseThrow(
+                ()-> new NotFounException("Jugador con nombre: "+name+" no encontrado")
+        );
+    }
+
+    @Override
+    public Player createPlayer(Player player) {
+        return playerRepository.save(player);
+    }
+
+    @Override
+    public Player updatePlayer(Long id, Player player) {
+        Player playerOld= getPlayerById(id);
+        return playerMapper.update(playerOld, player);
+    }
+
+    @Override
+    public void deletePlayer(Long id) {
+        if(playerRepository.findById(id).isEmpty()){
+            throw new UnprocesableEntityException("El jugador no se encuentra en la base de datos");
+        }
+        playerRepository.deleteById(id);
+    }
+}

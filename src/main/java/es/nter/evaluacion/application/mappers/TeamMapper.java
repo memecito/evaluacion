@@ -1,4 +1,4 @@
-package es.nter.evaluacion.mappers;
+package es.nter.evaluacion.application.mappers;
 
 import es.nter.evaluacion.domain.entity.Team;
 import es.nter.evaluacion.presentation.dto.equipos.TeamInputDto;
