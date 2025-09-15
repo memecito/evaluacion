@@ -1,6 +1,7 @@
 package es.nter.evaluacion.presentation.dto.jugadores;
 
 import es.nter.evaluacion.domain.entity.Team;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
@@ -23,8 +24,9 @@ public class PlayerInputDto {
     private int age;
     //TODO falta pedir la @
     @NotBlank(message = "Campo EMAIL requerido")
+    @Email
     private String email;
-    private List<String> posicion;
+    private List<String> positions;
 
     private Team team;
 }

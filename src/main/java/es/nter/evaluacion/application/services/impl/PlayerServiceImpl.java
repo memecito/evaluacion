@@ -3,6 +3,7 @@ package es.nter.evaluacion.application.services.impl;
 import es.nter.evaluacion.application.mappers.PlayerMapper;
 import es.nter.evaluacion.application.services.PlayerService;
 import es.nter.evaluacion.domain.entity.Player;
+import es.nter.evaluacion.domain.entity.Team;
 import es.nter.evaluacion.execption.NotFounException;
 import es.nter.evaluacion.execption.UnprocesableEntityException;
 import es.nter.evaluacion.repository.PlayerRepository;
@@ -41,6 +42,14 @@ public class PlayerServiceImpl implements PlayerService {
     public Player createPlayer(Player player) {
         return playerRepository.save(player);
     }
+
+    @Override
+    public Player addTeamToPlayer(Long id, Team team) {
+        Player player= getPlayerById(id);
+        player.setTeam(team);
+        return playerRepository.save(player);
+    }
+
 
     @Override
     public Player updatePlayer(Long id, Player player) {

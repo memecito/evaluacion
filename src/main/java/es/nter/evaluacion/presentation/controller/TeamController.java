@@ -1,9 +1,12 @@
 package es.nter.evaluacion.presentation.controller;
 
+import es.nter.evaluacion.application.mappers.PlayerMapper;
 import es.nter.evaluacion.application.mappers.TeamMapper;
 import es.nter.evaluacion.application.services.impl.TeamServiceImpl;
 import es.nter.evaluacion.presentation.dto.equipos.TeamInputDto;
 import es.nter.evaluacion.presentation.dto.equipos.TeamOuputDto;
+import es.nter.evaluacion.presentation.dto.equipos.TeamOuputDtoMini;
+import es.nter.evaluacion.presentation.dto.jugadores.PlayerInputDto;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -19,9 +22,11 @@ public class TeamController {
 
     private final TeamServiceImpl teamService;
     private final TeamMapper teamMapper;
+
+    private final PlayerMapper playerMapper;
     @GetMapping
-    public ResponseEntity<List<TeamOuputDto>> getAll() {
-        return ResponseEntity.ok(teamService.getAllTeam().stream().map(teamMapper::toDto).collect(Collectors.toList()));
+    public ResponseEntity<List<TeamOuputDtoMini>> getAll() {
+        return ResponseEntity.ok(teamService.getAllTeam().stream().map(teamMapper::toDtoMini).collect(Collectors.toList()));
     }
 
     @GetMapping("/{id}")
@@ -36,9 +41,14 @@ public class TeamController {
                 teamMapper.toDto(teamService.createTeam(teamMapper.toModel(teamInputDto)))
         );
     }
+    @PostMapping("/{id}/player")
+    public ResponseEntity<TeamOuputDto> addPlayerToTeam(@PathVariable Long id,@Valid PlayerInputDto playerInputDto){
+        return ResponseEntity.ok(teamMapper.toDto(
+                teamService.addPlayerToTeam(id,playerMapper.toModel(playerInputDto))));
+    }
 
     @PutMapping("/{id}")
-    public ResponseEntity<TeamOuputDto> update(@PathVariable Long id, @RequestBody TeamInputDto teamInputDto) {
+    public ResponseEntity<TeamOuputDto> update(@PathVariable Long id,@Valid @RequestBody TeamInputDto teamInputDto) {
         return ResponseEntity.ok(teamMapper.toDto(teamService.updateTeam(id,teamMapper.toModel(teamInputDto))));
     }
 

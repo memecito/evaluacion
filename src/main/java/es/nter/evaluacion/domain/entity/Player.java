@@ -33,8 +33,7 @@ public class Player {
     @Column(name = "position")
     private List<String> positions;
 
-    @JsonManagedReference
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
     @JoinColumn(name = "team_id")
     private Team team;
 

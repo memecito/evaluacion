@@ -24,7 +24,6 @@ public class Team {
     private Long id;
     private String name;
 
-    @JsonBackReference
     @OneToMany(mappedBy = "team")
     private List<Player> players;
 }

@@ -2,6 +2,7 @@ package es.nter.evaluacion.application.services.impl;
 
 import es.nter.evaluacion.application.mappers.TeamMapper;
 import es.nter.evaluacion.application.services.TeamService;
+import es.nter.evaluacion.domain.entity.Player;
 import es.nter.evaluacion.domain.entity.Team;
 import es.nter.evaluacion.execption.NotFounException;
 import es.nter.evaluacion.execption.UnprocesableEntityException;
@@ -35,6 +36,13 @@ public class TeamServiceImpl implements TeamService {
             throw new UnprocesableEntityException("El quipo ya existe");
         }
         return null;
+    }
+
+    @Override
+    public Team addPlayerToTeam(Long id, Player player){
+        Team team= getTeamById(id);
+        team.getPlayers().add(player);
+        return teamRepository.save(team);
     }
 
     @Override
