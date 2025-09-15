@@ -49,10 +49,11 @@ public class PlayerServiceImpl implements PlayerService {
     }
 
     @Override
-    public void deletePlayer(Long id) {
+    public boolean deletePlayer(Long id) {
         if(playerRepository.findById(id).isEmpty()){
             throw new UnprocesableEntityException("El jugador no se encuentra en la base de datos");
         }
         playerRepository.deleteById(id);
+        return true;
     }
 }

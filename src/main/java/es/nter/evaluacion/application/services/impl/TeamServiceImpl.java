@@ -43,8 +43,9 @@ public class TeamServiceImpl implements TeamService {
     }
 
     @Override
-    public void deleteTeam(Long id) {
+    public boolean deleteTeam(Long id) {
         //No es falta de consistencia en la logica, es otra forma de hacerlo difernete a Player
         teamRepository.delete(getTeamById(id));
+            return true;
     }
 }

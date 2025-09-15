@@ -14,11 +14,12 @@ import java.util.List;
 @AllArgsConstructor
 
 @Entity
-@Table(name = "jugador")
+@Table(name = "players")
 public class Player {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "player_id")
     private Long id;
     @Column(name = "name", nullable = false)
     private String name;
@@ -30,6 +31,7 @@ public class Player {
     private String email;
     private List<String> postions;
 
+    @OneToMany(mappedBy = "equipo")
     private Team team;
 
 

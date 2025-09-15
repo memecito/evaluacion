@@ -10,6 +10,6 @@ public interface PlayerService {
     Player getPlayerByName(String name);
     Player createPlayer(Player player);
     Player updatePlayer(Long id, Player player);
-    void deletePlayer(Long id);
+    boolean deletePlayer(Long id);
 
 }
