@@ -10,13 +10,9 @@ public interface PlayerService {
 
     Player getPlayerById(Long id);
 
-    Player getPlayerByName(String name);
-
     Player createPlayer(Player player);
 
     Player addTeamToPlayer(Long id, Team team);
-
-    void cartaLibertad(Long id);
 
     Player updatePlayer(Long id, Player player);
 

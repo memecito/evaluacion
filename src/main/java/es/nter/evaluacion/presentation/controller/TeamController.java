@@ -51,9 +51,9 @@ public class TeamController {
      */
     @PostMapping("/{id}/player")
     @Transactional
-    public ResponseEntity<TeamOuputDto> addPlayerToTeam(@PathVariable Long id, @Valid @RequestBody List<PlayerInputDto> playerInputDto) {
+    public ResponseEntity<TeamOuputDto> addPlayerToTeam(@PathVariable Long id, @Valid @RequestBody PlayerInputDto playerInputDto) {
         return ResponseEntity.ok(teamMapper.toDto(
-                teamService.addPlayerToTeam(id, Collections.singletonList(playerMapper.toModel((PlayerInputDto) playerInputDto)))));
+                teamService.addPlayerToTeam(id, playerMapper.toModel((PlayerInputDto) playerInputDto))));
     }
 
     @PutMapping("/{id}")

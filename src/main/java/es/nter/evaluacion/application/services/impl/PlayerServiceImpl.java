@@ -60,12 +60,6 @@ public class PlayerServiceImpl implements PlayerService {
         return playerRepository.save(player);
     }
 
-    @Override
-    public void cartaLibertad(Long id ) {
-        Player player1= getPlayerById(id);
-        player1.setTeam(null);
-    }
-
 
     @Override
     public Player updatePlayer(Long id, Player player) {

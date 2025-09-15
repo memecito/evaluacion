@@ -12,7 +12,7 @@ public interface TeamService {
 
     Team createTeam(Team team);
 
-    Team addPlayerToTeam(Long id, List<Player> player);
+    Team addPlayerToTeam(Long id, Player player);
 
     Team updateTeam(Long id, Team team);
 

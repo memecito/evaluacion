@@ -35,7 +35,7 @@ public class TeamServiceImpl implements TeamService {
 
     @Override
     public Team createTeam(Team team) {
-        if (!teamRepository.findTeamByName(team.getName()).isEmpty()) {
+        if (teamRepository.findTeamByName(team.getName()).isPresent()) {
             throw new UnprocesableEntityException("El quipo ya existe");
         }
 
@@ -43,12 +43,11 @@ public class TeamServiceImpl implements TeamService {
     }
 
     @Override
-    public Team addPlayerToTeam(Long id, List<Player> players) {
+    public Team addPlayerToTeam(Long id, Player players) {
 
         Team team = getTeamById(id);
-        players.forEach(p ->
-                playerService.addTeamToPlayer(p.getId(), team)
-        );
+        if(Objects.equals(players.getTeam(),team)){
+                playerService.addTeamToPlayer(players.getId(), team);}
         return team;
     }
 
