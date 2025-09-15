@@ -16,6 +16,6 @@ public interface PlayerService {
 
     Player updatePlayer(Long id, Player player);
 
-    boolean deletePlayer(Long id);
+    void deletePlayer(Long id);
 
 }
