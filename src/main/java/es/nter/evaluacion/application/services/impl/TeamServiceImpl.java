@@ -18,6 +18,8 @@ public class TeamServiceImpl implements TeamService {
     private final TeamRepository teamRepository;
     private final TeamMapper teamMapper;
 
+    private final PlayerServiceImpl playerService;
+
     @Override
     public List<Team> getAllTeam() {
         return teamRepository.findAll();
@@ -40,9 +42,11 @@ public class TeamServiceImpl implements TeamService {
 
     @Override
     public Team addPlayerToTeam(Long id, Player player){
+
         Team team= getTeamById(id);
-        team.getPlayers().add(player);
-        return teamRepository.save(team);
+        playerService.addTeamToPlayer(player.getId(),team);
+        //return teamRepository.save(team);
+        return team;
     }
 
     @Override
@@ -54,7 +58,10 @@ public class TeamServiceImpl implements TeamService {
     @Override
     public boolean deleteTeam(Long id) {
         //No es falta de consistencia en la logica, es otra forma de hacerlo difernete a Player
+        if(! getTeamById(id).getPlayers().isEmpty()){
+            throw new UnprocesableEntityException("Equipo con jugadores, dele la carta de libertad");
+        }
         teamRepository.delete(getTeamById(id));
-            return true;
+        return true;
     }
 }

@@ -35,6 +35,13 @@ public class TeamController {
                 teamMapper.toDto(teamService.getTeamById(id)));
     }
 
+
+    @PostMapping
+    public ResponseEntity<TeamOuputDto> created(@Valid @RequestBody TeamInputDto teamInputDto) {
+        return ResponseEntity.ok(
+                teamMapper.toDto(teamService.createTeam(teamMapper.toModel(teamInputDto)))
+        );
+    }
     @PostMapping
     public ResponseEntity<TeamOuputDto> created(@Valid @RequestBody TeamInputDto teamInputDto) {
         return ResponseEntity.ok(
@@ -42,7 +49,7 @@ public class TeamController {
         );
     }
     @PostMapping("/{id}/player")
-    public ResponseEntity<TeamOuputDto> addPlayerToTeam(@PathVariable Long id,@Valid PlayerInputDto playerInputDto){
+    public ResponseEntity<TeamOuputDto> addPlayerToTeam(@PathVariable Long id,@Valid @RequestBody PlayerInputDto playerInputDto){
         return ResponseEntity.ok(teamMapper.toDto(
                 teamService.addPlayerToTeam(id,playerMapper.toModel(playerInputDto))));
     }

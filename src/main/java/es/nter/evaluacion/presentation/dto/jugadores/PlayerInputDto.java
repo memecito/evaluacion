@@ -15,9 +15,9 @@ import java.util.List;
 public class PlayerInputDto {
 
     private Long id;
-    @NotBlank(message = "Campo NOMBRE requerido")
+    @NotBlank(message = "Campo Name requerido")
     private String name;
-    @NotBlank(message = "Campo APELLIDOS requerido")
+    @NotBlank(message = "Campo Surname requerido")
     private String surname;
     @Min(value = 0,message = "debe introducir una edad validad")
     @Max(value = 99, message = "debe introducir una edad validad")
