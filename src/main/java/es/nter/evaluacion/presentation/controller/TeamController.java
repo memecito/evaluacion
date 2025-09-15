@@ -53,7 +53,7 @@ public class TeamController {
     @Transactional
     public ResponseEntity<TeamOuputDto> addPlayerToTeam(@PathVariable Long id, @Valid @RequestBody PlayerInputDto playerInputDto) {
         return ResponseEntity.ok(teamMapper.toDto(
-                teamService.addPlayerToTeam(id, playerMapper.toModel((PlayerInputDto) playerInputDto))));
+                teamService.addPlayerToTeam(id, playerMapper.toModel(playerInputDto))));
     }
 
     @PutMapping("/{id}")
