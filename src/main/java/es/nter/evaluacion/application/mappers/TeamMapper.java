@@ -7,7 +7,7 @@ import es.nter.evaluacion.presentation.dto.equipos.TeamOuputDtoMini;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", uses = {PlayerMapper.class})
 public interface TeamMapper {
 
     //INPUT

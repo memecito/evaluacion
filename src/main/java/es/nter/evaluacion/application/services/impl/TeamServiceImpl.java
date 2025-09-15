@@ -16,6 +16,7 @@ import java.util.List;
 public class TeamServiceImpl implements TeamService {
     private final TeamRepository teamRepository;
     private final TeamMapper teamMapper;
+
     @Override
     public List<Team> getAllTeam() {
         return teamRepository.findAll();

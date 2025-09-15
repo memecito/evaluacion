@@ -1,5 +1,6 @@
 package es.nter.evaluacion.domain.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -29,9 +30,12 @@ public class Player {
     private int age;
     @Column(name = "email", nullable = false)
     private String email;
-    private List<String> postions;
+    @Column(name = "position")
+    private List<String> positions;
 
-    @OneToMany(mappedBy = "equipo")
+    @JsonManagedReference
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "team_id")
     private Team team;
 
 

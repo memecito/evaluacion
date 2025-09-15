@@ -1,6 +1,7 @@
 package es.nter.evaluacion.presentation.dto.jugadores;
 
 import es.nter.evaluacion.domain.entity.Team;
+import es.nter.evaluacion.presentation.dto.equipos.TeamOuputDtoMini;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,5 +17,5 @@ public class PlayerOuputDto {
     private String email;
     private List<String> positions;
 
-    private Team team;
+    private TeamOuputDtoMini team;
 }

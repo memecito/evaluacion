@@ -1,5 +1,6 @@
 package es.nter.evaluacion.domain.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -14,7 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 
 @Entity
-@Table(name = "equipo")
+@Table(name = "teams")
 public class Team {
 
     @Id
@@ -23,7 +24,7 @@ public class Team {
     private Long id;
     private String name;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "player_id")
+    @JsonBackReference
+    @OneToMany(mappedBy = "team")
     private List<Player> players;
 }
