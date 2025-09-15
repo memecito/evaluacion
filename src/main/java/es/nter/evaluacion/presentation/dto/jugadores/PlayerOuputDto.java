@@ -1,12 +1,12 @@
 package es.nter.evaluacion.presentation.dto.jugadores;
 
-import es.nter.evaluacion.domain.entity.Team;
 import es.nter.evaluacion.presentation.dto.equipos.TeamOuputDtoMini;
 import lombok.Getter;
 import lombok.Setter;
 
 
 import java.util.List;
+
 @Getter
 @Setter
 public class PlayerOuputDto {

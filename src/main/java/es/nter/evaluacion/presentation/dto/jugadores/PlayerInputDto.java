@@ -19,12 +19,12 @@ public class PlayerInputDto {
     private String name;
     @NotBlank(message = "Campo Surname requerido")
     private String surname;
-    @Min(value = 0,message = "debe introducir una edad validad")
+    @Min(value = 0, message = "debe introducir una edad validad")
     @Max(value = 99, message = "debe introducir una edad validad")
     private int age;
     //TODO falta pedir la @
     @NotBlank(message = "Campo EMAIL requerido")
-    @Email
+    @Email(message = "formato email no valido")
     private String email;
     private List<String> positions;
 

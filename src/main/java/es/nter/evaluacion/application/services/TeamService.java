@@ -7,9 +7,16 @@ import java.util.List;
 
 public interface TeamService {
     List<Team> getAllTeam();
+
     Team getTeamById(Long id);
+
     Team createTeam(Team team);
-    Team addPlayerToTeam(Long id, Player player);
+
+    Team addPlayerToTeam(Long id, List<Player> player);
+
     Team updateTeam(Long id, Team team);
+
     boolean deleteTeam(Long id);
+
+    boolean exist(Long id);
 }

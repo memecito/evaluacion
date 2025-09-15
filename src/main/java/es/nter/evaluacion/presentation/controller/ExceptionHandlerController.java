@@ -1,4 +1,4 @@
-package es.nter.evaluacion.domain.entity;
+package es.nter.evaluacion.presentation.controller;
 
 
 import es.nter.evaluacion.execption.NotFounException;

@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 
 @Service
 @RequiredArgsConstructor
@@ -28,40 +29,51 @@ public class TeamServiceImpl implements TeamService {
     @Override
     public Team getTeamById(Long id) {
         return teamRepository.findById(id).orElseThrow(
-                ()-> new NotFounException("Equipo con id: "+id+" no encontrado")
+                () -> new NotFounException("Equipo con id: " + id + " no encontrado")
         );
     }
 
     @Override
     public Team createTeam(Team team) {
-        if(!teamRepository.findTeamByName(team.getName()).isEmpty()){
+        if (!teamRepository.findTeamByName(team.getName()).isEmpty()) {
             throw new UnprocesableEntityException("El quipo ya existe");
         }
-        return null;
+
+        return teamRepository.save(team);
     }
 
     @Override
-    public Team addPlayerToTeam(Long id, Player player){
+    public Team addPlayerToTeam(Long id, List<Player> players) {
 
-        Team team= getTeamById(id);
-        playerService.addTeamToPlayer(player.getId(),team);
-        //return teamRepository.save(team);
+        Team team = getTeamById(id);
+        players.forEach(p ->
+                playerService.addTeamToPlayer(p.getId(), team)
+        );
         return team;
     }
 
     @Override
     public Team updateTeam(Long id, Team team) {
-        Team teamOld= getTeamById(id);
+        Team teamOld = getTeamById(id);
+        if(!Objects.equals(teamOld,team)){
+            throw new UnprocesableEntityException("Error con la entidad actualizable");
+        }
         return teamMapper.update(teamOld, team);
     }
 
     @Override
     public boolean deleteTeam(Long id) {
         //No es falta de consistencia en la logica, es otra forma de hacerlo difernete a Player
-        if(! getTeamById(id).getPlayers().isEmpty()){
+        if (!getTeamById(id).getPlayers().isEmpty()) {
             throw new UnprocesableEntityException("Equipo con jugadores, dele la carta de libertad");
         }
         teamRepository.delete(getTeamById(id));
         return true;
     }
+
+    @Override
+    public boolean exist(Long id) {
+        return teamRepository.findById(id).isPresent();
+    }
+
 }

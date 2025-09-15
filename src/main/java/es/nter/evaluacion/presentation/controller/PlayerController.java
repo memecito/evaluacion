@@ -7,8 +7,10 @@ import es.nter.evaluacion.presentation.dto.equipos.TeamInputDto;
 import es.nter.evaluacion.presentation.dto.jugadores.PlayerInputDto;
 import es.nter.evaluacion.presentation.dto.jugadores.PlayerOuputDto;
 import es.nter.evaluacion.presentation.dto.jugadores.PlayerOuputDtoMini;
+import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -39,22 +41,29 @@ public class PlayerController {
     }
 
     @PostMapping
-    public ResponseEntity<PlayerOuputDto> created(@Valid @RequestBody  PlayerInputDto playerInputDto) {
-        return ResponseEntity.ok(playerMapper.toDto(playerService.createPlayer(playerMapper.toModel(playerInputDto))));
+    @Transactional
+    public ResponseEntity<PlayerOuputDto> created(@Valid @RequestBody PlayerInputDto playerInputDto) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(playerMapper.toDto(playerService.createPlayer(playerMapper.toModel(playerInputDto))));
     }
 
+    /*
+    Con este endpoint añadimos un equipo al jugador
+     */
     @PostMapping("/{id}/team")
-    public ResponseEntity<PlayerOuputDto> addTeamToDto(@PathVariable Long id, @Valid @RequestBody TeamInputDto teamInputDto){
+    @Transactional
+    public ResponseEntity<PlayerOuputDto> addTeamToDto(@PathVariable Long id, @Valid @RequestBody TeamInputDto teamInputDto) {
         return ResponseEntity.ok(playerMapper.toDto(playerService.addTeamToPlayer(id, teamMapper.toModel(teamInputDto))));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<PlayerOuputDto> update(@PathVariable Long id, @RequestBody  PlayerInputDto playerInputDto) {
+    @Transactional
+    public ResponseEntity<PlayerOuputDto> update(@PathVariable Long id, @RequestBody PlayerInputDto playerInputDto) {
         return ResponseEntity.ok(playerMapper.toDto(
                 playerService.updatePlayer(id, playerMapper.toModel(playerInputDto))));
     }
 
     @DeleteMapping("/{id}")
+    @Transactional
     public ResponseEntity<String> deleted(@PathVariable Long id) {
         playerService.deletePlayer(id);
         return ResponseEntity.ok("Jugador eliminado");

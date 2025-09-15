@@ -14,11 +14,11 @@ public class CustomError {
     private String error;
     private String message;
 
-    public CustomError(int httpCode, String error, String message){
-        this.timestamp= LocalDateTime.now();
-        this.httpCode=httpCode;
-        this.error=error;
-        this.message=message;
+    public CustomError(int httpCode, String error, String message) {
+        this.timestamp = LocalDateTime.now();
+        this.httpCode = httpCode;
+        this.error = error;
+        this.message = message;
 
     }
 }

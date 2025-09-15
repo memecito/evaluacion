@@ -7,11 +7,14 @@ import es.nter.evaluacion.presentation.dto.equipos.TeamInputDto;
 import es.nter.evaluacion.presentation.dto.equipos.TeamOuputDto;
 import es.nter.evaluacion.presentation.dto.equipos.TeamOuputDtoMini;
 import es.nter.evaluacion.presentation.dto.jugadores.PlayerInputDto;
+import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -24,6 +27,7 @@ public class TeamController {
     private final TeamMapper teamMapper;
 
     private final PlayerMapper playerMapper;
+
     @GetMapping
     public ResponseEntity<List<TeamOuputDtoMini>> getAll() {
         return ResponseEntity.ok(teamService.getAllTeam().stream().map(teamMapper::toDtoMini).collect(Collectors.toList()));
@@ -35,33 +39,34 @@ public class TeamController {
                 teamMapper.toDto(teamService.getTeamById(id)));
     }
 
+    @PostMapping
+    @Transactional
+    public ResponseEntity<TeamOuputDto> created(@Valid @RequestBody TeamInputDto teamInputDto) {
 
-    @PostMapping
-    public ResponseEntity<TeamOuputDto> created(@Valid @RequestBody TeamInputDto teamInputDto) {
-        return ResponseEntity.ok(
-                teamMapper.toDto(teamService.createTeam(teamMapper.toModel(teamInputDto)))
-        );
+        return ResponseEntity.status(HttpStatus.CREATED).body(teamMapper.toDto(teamService.createTeam(teamMapper.toModel(teamInputDto))));
     }
-    @PostMapping
-    public ResponseEntity<TeamOuputDto> created(@Valid @RequestBody TeamInputDto teamInputDto) {
-        return ResponseEntity.ok(
-                teamMapper.toDto(teamService.createTeam(teamMapper.toModel(teamInputDto)))
-        );
-    }
+
+    /*
+    Añadimos una lista de jugadores al equipo
+     */
     @PostMapping("/{id}/player")
-    public ResponseEntity<TeamOuputDto> addPlayerToTeam(@PathVariable Long id,@Valid @RequestBody PlayerInputDto playerInputDto){
+    @Transactional
+    public ResponseEntity<TeamOuputDto> addPlayerToTeam(@PathVariable Long id, @Valid @RequestBody List<PlayerInputDto> playerInputDto) {
         return ResponseEntity.ok(teamMapper.toDto(
-                teamService.addPlayerToTeam(id,playerMapper.toModel(playerInputDto))));
+                teamService.addPlayerToTeam(id, Collections.singletonList(playerMapper.toModel((PlayerInputDto) playerInputDto)))));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<TeamOuputDto> update(@PathVariable Long id,@Valid @RequestBody TeamInputDto teamInputDto) {
-        return ResponseEntity.ok(teamMapper.toDto(teamService.updateTeam(id,teamMapper.toModel(teamInputDto))));
+    @Transactional
+    public ResponseEntity<TeamOuputDto> update(@PathVariable Long id, @Valid @RequestBody TeamInputDto teamInputDto) {
+        return ResponseEntity.ok(teamMapper.toDto(teamService.updateTeam(id, teamMapper.toModel(teamInputDto))));
     }
 
     @DeleteMapping("/{id}")
+    @Transactional
     public ResponseEntity<String> deleted(@PathVariable Long id) {
         teamService.deleteTeam(id);
         return ResponseEntity.ok("Equipo eliminado");
     }
+
 }
