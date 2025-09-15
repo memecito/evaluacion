@@ -21,6 +21,9 @@ public class PlayerServiceImpl implements PlayerService {
     private final PlayerRepository playerRepository;
     private final PlayerMapper playerMapper;
 
+    @Lazy
+    @Autowired
+    private TeamServiceImpl teamService;
 
 
     @Override
