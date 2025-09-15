@@ -16,7 +16,7 @@ public interface TeamService {
 
     Team updateTeam(Long id, Team team);
 
-    boolean deleteTeam(Long id);
+    void deleteTeam(Long id);
 
     boolean exist(Long id);
 }

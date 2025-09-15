@@ -61,13 +61,12 @@ public class TeamServiceImpl implements TeamService {
     }
 
     @Override
-    public boolean deleteTeam(Long id) {
+    public void deleteTeam(Long id) {
         //No es falta de consistencia en la logica, es otra forma de hacerlo difernete a Player
         if (!getTeamById(id).getPlayers().isEmpty()) {
             throw new UnprocesableEntityException("Equipo con jugadores, dele la carta de libertad");
         }
         teamRepository.delete(getTeamById(id));
-        return true;
     }
 
     @Override
