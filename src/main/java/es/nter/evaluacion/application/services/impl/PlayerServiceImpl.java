@@ -21,9 +21,7 @@ public class PlayerServiceImpl implements PlayerService {
     private final PlayerRepository playerRepository;
     private final PlayerMapper playerMapper;
 
-    @Lazy
-    @Autowired
-    private TeamServiceImpl teamService;
+
 
     @Override
     public List<Player> getAllPlayer() {
@@ -37,12 +35,7 @@ public class PlayerServiceImpl implements PlayerService {
         );
     }
 
-    @Override
-    public Player getPlayerByName(String name) {
-        return playerRepository.findPlayerByName(name).orElseThrow(
-                () -> new NotFounException("Jugador con nombre: " + name + " no encontrado")
-        );
-    }
+
 
     @Override
     public Player createPlayer(Player player) {
