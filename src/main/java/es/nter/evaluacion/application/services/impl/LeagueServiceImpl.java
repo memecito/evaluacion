@@ -67,10 +67,10 @@ public class LeagueServiceImpl implements LeagueService {
 
     @Override
     public void deletePlayer(Long id) {
-        if(leagueRepository.findById(id).isEmpty()){
-            throw new UnprocesableEntityException("Esta liga no existe");
+        League league= getLeagueById(id);
+        if(!league.getTeams().isEmpty()){
+            throw new UnprocesableEntityException("Esta liga tiene equipo y no se puede eliminar");
         }
         leagueRepository.deleteById(id);
-
     }
 }

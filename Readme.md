@@ -1,95 +1,49 @@
-# Evaluation Proyect
+# Proyecto de Evaluacion
 
-A proyect for mid evaluation of backend
+_ApiRest tipo CRUD para la gestion de tres entidades_
 
-## Getting Started
+## Comenzando 🚀
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+_Estas instrucciones te permitirán obtener una copia del proyecto en funcionamiento en tu máquina local para propósitos de desarrollo y pruebas._
 
-To clone this repository:
-```
-git clone https://gitlab.nfqsolutions.es/backend/antonio.gutierrez-evaluacion.git
+Realiza un git clone con la direccion del repositorio para clonarlo a tu equipo
 
-```
+### Pre-requisitos 📋
 
-
-### Prerequisites
-
-Tools for the correct build of this service
-```
-Java v17
-IntelliJ
-```
-
-### Installing
-
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
+_Que cosas necesitas para instalar el software y como instalarlas_
 
 ```
-Give the example
+Java
 ```
 
-And repeat
 
-```
-until finished
-```
+## Construido con 🛠️
 
-End with an example of getting some data out of the system or using it for a little demo
+_Menciona las herramientas que utilizaste para crear tu proyecto_
 
-## Running the tests
+* [Spring Boot](http://www.spring.io/quickstart) - El framework web usado
+* [Maven](https://maven.apache.org/) - Manejador de dependencias
 
-Explain how to run the automated tests for this system
+## Autores ✒️
 
-### Break down into end to end tests
+_Menciona a todos aquellos que ayudaron a levantar el proyecto desde sus inicios_
 
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
-
-## Built With
-
-* [Spring Boot](http://start.spring.io) - Spring Boot 
-* [Maven](https://maven.apache.org/) - Dependency Management
+* **Antonio M. Gutierrez Martines**  - [memecito](https://github.com/memecito)
 
 
-## Contributing
+## Licencia 📄
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+Este proyecto está bajo la Licencia (Tu Licencia) - mira el archivo [LICENSE.md](License.md) para detalles
 
-## Versioning
+## Expresiones de Gratitud 🎁
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
+* Comenta a otros sobre este proyecto 📢
+* Invita una cerveza 🍺 o un café ☕ a alguien del equipo.
+* Da las gracias públicamente 🤓.
+* Dona con cripto a esta dirección: `bc1qs5nc53vylsxzzgnkadh3g7ll6mk6tyyl79tv2v`
+* etc.
 
-## Authors
 
-* **Antonio M. Gutierrez Martinez** - *Initial work* - [Memecito](https://github.com/memecito)
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
-  a desarrollada con Java Srping Boot y H2</p>
+---
+⌨️ con ❤️ por [memecito](https://github.com/memecito) 😊
