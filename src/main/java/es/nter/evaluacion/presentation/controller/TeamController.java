@@ -43,14 +43,11 @@ public class TeamController {
 
     @PostMapping
     @Transactional
-    public ResponseEntity<TeamOuputDto> created(@Valid @RequestBody TeamInputDto teamInputDto) {
+    public ResponseEntity<TeamOuputDtoMini> created(@Valid @RequestBody TeamInputDto teamInputDto) {
 
-        return ResponseEntity.status(HttpStatus.CREATED).body(teamMapper.toDto(teamService.createTeam(teamMapper.toModel(teamInputDto))));
+        return ResponseEntity.status(HttpStatus.CREATED).body(teamMapper.toDtoMini(teamService.createTeam(teamMapper.toModel(teamInputDto))));
     }
 
-    /*
-    Añadimos una lista de jugadores al equipo
-     */
     @PostMapping("/{id}/player")
     @Transactional
     public ResponseEntity<TeamOuputDto> addPlayerToTeam(@PathVariable Long id,

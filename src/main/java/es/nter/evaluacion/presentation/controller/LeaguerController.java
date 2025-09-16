@@ -46,9 +46,9 @@ public class LeaguerController {
 
     @PostMapping
     @Transactional
-    public ResponseEntity<LeagueOuputDto> created(@Valid @RequestBody LeagueInputDto leagueInputDto) {
+    public ResponseEntity<LeagueOuputDtoMini> created(@Valid @RequestBody LeagueInputDto leagueInputDto) {
         return ResponseEntity.status(HttpStatus.CREATED)
-                .body(leagueMapper.toDto(leagueService.createLeague(leagueMapper.toModel(leagueInputDto))));
+                .body(leagueMapper.toDtoMini(leagueService.createLeague(leagueMapper.toModel(leagueInputDto))));
     }
 
     @PostMapping("/{id}/teams")

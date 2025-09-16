@@ -42,8 +42,8 @@ public class PlayerController {
 
     @PostMapping
     @Transactional
-    public ResponseEntity<PlayerOuputDto> created(@Valid @RequestBody PlayerInputDto playerInputDto) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(playerMapper.toDto(playerService.createPlayer(playerMapper.toModel(playerInputDto))));
+    public ResponseEntity<PlayerOuputDtoMini> created(@Valid @RequestBody PlayerInputDto playerInputDto) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(playerMapper.toDtoMini(playerService.createPlayer(playerMapper.toModel(playerInputDto))));
     }
 
     /*
