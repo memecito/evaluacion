@@ -1,9 +1,9 @@
 package es.nter.evaluacion.application.mappers;
 
 import es.nter.evaluacion.domain.entity.Player;
-import es.nter.evaluacion.presentation.dto.jugadores.PlayerInputDto;
-import es.nter.evaluacion.presentation.dto.jugadores.PlayerOuputDto;
-import es.nter.evaluacion.presentation.dto.jugadores.PlayerOuputDtoMini;
+import es.nter.evaluacion.presentation.dto.players.PlayerInputDto;
+import es.nter.evaluacion.presentation.dto.players.PlayerOuputDto;
+import es.nter.evaluacion.presentation.dto.players.PlayerOuputDtoMini;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;
 

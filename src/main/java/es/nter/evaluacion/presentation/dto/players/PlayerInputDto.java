@@ -1,6 +1,7 @@
-package es.nter.evaluacion.presentation.dto.jugadores;
+package es.nter.evaluacion.presentation.dto.players;
 
 import es.nter.evaluacion.domain.entity.Team;
+import es.nter.evaluacion.presentation.dto.teams.TeamInputDto;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
@@ -28,5 +29,5 @@ public class PlayerInputDto {
     private String email;
     private List<String> positions;
 
-    private Team team;
+    private TeamInputDto team;
 }

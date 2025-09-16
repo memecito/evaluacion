@@ -3,10 +3,10 @@ package es.nter.evaluacion.presentation.controller;
 import es.nter.evaluacion.application.mappers.PlayerMapper;
 import es.nter.evaluacion.application.mappers.TeamMapper;
 import es.nter.evaluacion.application.services.impl.PlayerServiceImpl;
-import es.nter.evaluacion.presentation.dto.equipos.TeamInputDto;
-import es.nter.evaluacion.presentation.dto.jugadores.PlayerInputDto;
-import es.nter.evaluacion.presentation.dto.jugadores.PlayerOuputDto;
-import es.nter.evaluacion.presentation.dto.jugadores.PlayerOuputDtoMini;
+import es.nter.evaluacion.presentation.dto.teams.TeamInputDto;
+import es.nter.evaluacion.presentation.dto.players.PlayerInputDto;
+import es.nter.evaluacion.presentation.dto.players.PlayerOuputDto;
+import es.nter.evaluacion.presentation.dto.players.PlayerOuputDtoMini;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -57,7 +57,7 @@ public class PlayerController {
 
     @PutMapping("/{id}")
     @Transactional
-    public ResponseEntity<PlayerOuputDto> update(@PathVariable Long id, @RequestBody PlayerInputDto playerInputDto) {
+    public ResponseEntity<PlayerOuputDto> update(@PathVariable Long id,@Valid @RequestBody PlayerInputDto playerInputDto) {
         return ResponseEntity.ok(playerMapper.toDto(
                 playerService.updatePlayer(id, playerMapper.toModel(playerInputDto))));
     }

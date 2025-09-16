@@ -1,6 +1,6 @@
-package es.nter.evaluacion.presentation.dto.equipos;
+package es.nter.evaluacion.presentation.dto.teams;
 
-import es.nter.evaluacion.presentation.dto.jugadores.PlayerOuputDtoMini;
+import es.nter.evaluacion.presentation.dto.players.PlayerOuputDtoMini;
 import lombok.Getter;
 import lombok.Setter;
 

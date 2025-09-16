@@ -1,4 +1,4 @@
-package es.nter.evaluacion.presentation.dto.jugadores;
+package es.nter.evaluacion.presentation.dto.players;
 
 import lombok.Getter;
 import lombok.Setter;

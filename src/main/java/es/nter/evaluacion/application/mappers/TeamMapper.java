@@ -1,9 +1,9 @@
 package es.nter.evaluacion.application.mappers;
 
 import es.nter.evaluacion.domain.entity.Team;
-import es.nter.evaluacion.presentation.dto.equipos.TeamInputDto;
-import es.nter.evaluacion.presentation.dto.equipos.TeamOuputDto;
-import es.nter.evaluacion.presentation.dto.equipos.TeamOuputDtoMini;
+import es.nter.evaluacion.presentation.dto.teams.TeamInputDto;
+import es.nter.evaluacion.presentation.dto.teams.TeamOuputDto;
+import es.nter.evaluacion.presentation.dto.teams.TeamOuputDtoMini;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;
 

@@ -14,19 +14,20 @@ import java.util.List;
 @AllArgsConstructor
 
 @Entity
-@Table(name = "teams")
-public class Team {
+@Table(name = "league")
+public class League {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "teaam_id")
+    @Column(name = "league_id")
     private Long id;
+    @Column(name = "name", nullable = false)
     private String name;
+    @Column(name = "description")
+    private String description;
+    @Column(name = "status", insertable = false)
+    private boolean active;
 
-    @OneToMany(mappedBy = "team")
-    private List<Player> players;
-
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
-    @JoinColumn(name = "league_id")
-    private League league;
+    @OneToMany(mappedBy = "league")
+    private List<Team> teams;
 }

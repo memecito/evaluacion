@@ -1,4 +1,4 @@
-package es.nter.evaluacion.presentation.dto.equipos;
+package es.nter.evaluacion.presentation.dto.teams;
 
 import jakarta.validation.constraints.NotBlank;
 
