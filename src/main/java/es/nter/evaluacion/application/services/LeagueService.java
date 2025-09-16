@@ -18,6 +18,8 @@ public interface LeagueService {
 
     League updateLeague(Long id, League league);
 
+    League activedLeague(Long id);
+
     void deletePlayer(Long id);
 
 }

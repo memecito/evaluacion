@@ -21,7 +21,7 @@ public class Team {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "teaam_id")
     private Long id;
-    @Column(name = "name",unique = true, nullable = false)
+    @Column(name = "name", unique = true, nullable = false)
     private String name;
 
     @OneToMany(mappedBy = "team")

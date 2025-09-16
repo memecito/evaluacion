@@ -1,6 +1,5 @@
 package es.nter.evaluacion.presentation.dto.players;
 
-import es.nter.evaluacion.domain.entity.Team;
 import es.nter.evaluacion.presentation.dto.teams.TeamInputDto;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Max;

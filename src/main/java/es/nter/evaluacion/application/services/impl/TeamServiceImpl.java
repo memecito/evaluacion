@@ -47,14 +47,15 @@ public class TeamServiceImpl implements TeamService {
     public Team addPlayerToTeam(Long id, Player players) {
 
         Team team = getTeamById(id);
-        if(Objects.equals(players.getTeam(),team)){
-                playerService.addTeamToPlayer(players.getId(), team);}
+        if (Objects.equals(players.getTeam(), team)) {
+            playerService.addTeamToPlayer(players.getId(), team);
+        }
         return team;
     }
 
     @Override
     public Team addLeagueToTeam(Long id, League league) {
-        Team team= getTeamById(id);
+        Team team = getTeamById(id);
         team.setLeague(league);
         return teamRepository.save(team);
     }
@@ -62,8 +63,8 @@ public class TeamServiceImpl implements TeamService {
     @Override
     public Team updateTeam(Long id, Team team) {
         Team teamOld = getTeamById(id);
-        if(!Objects.equals(teamOld,team)){
-            throw new UnprocesableEntityException("Error con la entidad actualizable");
+        if (Objects.equals(teamOld, team)) {
+            throw new UnprocesableEntityException("Error con la entidad actualizable, es la misma");
         }
         return teamMapper.update(teamOld, team);
     }

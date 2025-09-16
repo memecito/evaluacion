@@ -57,7 +57,7 @@ public class PlayerController {
 
     @PutMapping("/{id}")
     @Transactional
-    public ResponseEntity<PlayerOuputDto> update(@PathVariable Long id,@Valid @RequestBody PlayerInputDto playerInputDto) {
+    public ResponseEntity<PlayerOuputDto> update(@PathVariable Long id, @Valid @RequestBody PlayerInputDto playerInputDto) {
         return ResponseEntity.ok(playerMapper.toDto(
                 playerService.updatePlayer(id, playerMapper.toModel(playerInputDto))));
     }

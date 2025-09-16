@@ -62,7 +62,7 @@ public class TeamController {
     @PostMapping("/{id}/leage")
     @Transactional
     public ResponseEntity<TeamOuputDto> addLeageToTeam(@PathVariable Long id,
-                                                       @Valid @RequestBody LeagueInputDto leagueInputDto){
+                                                       @Valid @RequestBody LeagueInputDto leagueInputDto) {
         return ResponseEntity.ok(teamMapper.toDto(
                 teamService.addLeagueToTeam(id, leagueMapper.toModel(leagueInputDto))));
     }

@@ -40,7 +40,7 @@ public class LeaguerController {
     }
 
     @GetMapping("/name/{name}")
-    public ResponseEntity<LeagueOuputDto> getByName(@PathVariable String name){
+    public ResponseEntity<LeagueOuputDto> getByName(@PathVariable String name) {
         return ResponseEntity.ok(leagueMapper.toDto(leagueService.getLeagueByName(name)));
     }
 
@@ -54,7 +54,7 @@ public class LeaguerController {
     @PostMapping("/{id}/teams")
     @Transactional
     public ResponseEntity<LeagueOuputDto> addTeamsToLeage(@PathVariable Long id,
-                                                          @Valid @RequestBody TeamInputDto teamInputDto){
+                                                          @Valid @RequestBody TeamInputDto teamInputDto) {
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(leagueMapper.toDto(leagueService.addTeam(id, teamMapper.toModel(teamInputDto))));
     }
@@ -64,6 +64,13 @@ public class LeaguerController {
     public ResponseEntity<LeagueOuputDto> update(@PathVariable Long id, @Valid @RequestBody LeagueInputDto leagueInputDto) {
         return ResponseEntity.ok(leagueMapper.toDto(
                 leagueService.updateLeague(id, leagueMapper.toModel(leagueInputDto))));
+    }
+
+    @PutMapping("/{id}/actived")
+    @Transactional
+    public ResponseEntity<LeagueOuputDto> activedLeague(@PathVariable Long id) {
+        return ResponseEntity.ok(leagueMapper.toDto(
+                leagueService.activedLeague(id)));
     }
 
     @DeleteMapping("/{id}")
