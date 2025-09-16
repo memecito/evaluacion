@@ -1,5 +1,6 @@
 package es.nter.evaluacion.application.services;
 
+import es.nter.evaluacion.domain.entity.League;
 import es.nter.evaluacion.domain.entity.Player;
 import es.nter.evaluacion.domain.entity.Team;
 
@@ -13,6 +14,8 @@ public interface TeamService {
     Team createTeam(Team team);
 
     Team addPlayerToTeam(Long id, Player player);
+
+    Team addLeagueToTeam(Long id, League league);
 
     Team updateTeam(Long id, Team team);
 

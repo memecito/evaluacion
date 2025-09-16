@@ -1,8 +1,10 @@
 package es.nter.evaluacion.presentation.controller;
 
+import es.nter.evaluacion.application.mappers.LeagueMapper;
 import es.nter.evaluacion.application.mappers.PlayerMapper;
 import es.nter.evaluacion.application.mappers.TeamMapper;
 import es.nter.evaluacion.application.services.impl.TeamServiceImpl;
+import es.nter.evaluacion.presentation.dto.league.LeagueInputDto;
 import es.nter.evaluacion.presentation.dto.teams.TeamInputDto;
 import es.nter.evaluacion.presentation.dto.teams.TeamOuputDto;
 import es.nter.evaluacion.presentation.dto.teams.TeamOuputDtoMini;
@@ -26,6 +28,7 @@ public class TeamController {
     private final TeamMapper teamMapper;
 
     private final PlayerMapper playerMapper;
+    private final LeagueMapper leagueMapper;
 
     @GetMapping
     public ResponseEntity<List<TeamOuputDtoMini>> getAll() {
@@ -50,9 +53,18 @@ public class TeamController {
      */
     @PostMapping("/{id}/player")
     @Transactional
-    public ResponseEntity<TeamOuputDto> addPlayerToTeam(@PathVariable Long id, @Valid @RequestBody PlayerInputDto playerInputDto) {
+    public ResponseEntity<TeamOuputDto> addPlayerToTeam(@PathVariable Long id,
+                                                        @Valid @RequestBody PlayerInputDto playerInputDto) {
         return ResponseEntity.ok(teamMapper.toDto(
                 teamService.addPlayerToTeam(id, playerMapper.toModel(playerInputDto))));
+    }
+
+    @PostMapping("/{id}/leage")
+    @Transactional
+    public ResponseEntity<TeamOuputDto> addLeageToTeam(@PathVariable Long id,
+                                                       @Valid @RequestBody LeagueInputDto leagueInputDto){
+        return ResponseEntity.ok(teamMapper.toDto(
+                teamService.addLeagueToTeam(id, leagueMapper.toModel(leagueInputDto))));
     }
 
     @PutMapping("/{id}")

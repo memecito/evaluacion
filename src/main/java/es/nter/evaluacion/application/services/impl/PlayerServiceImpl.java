@@ -42,6 +42,9 @@ public class PlayerServiceImpl implements PlayerService {
 
     @Override
     public Player createPlayer(Player player) {
+        if(playerRepository.findPlayerByNameAndSurname (player.getName(),player.getSurname()).isPresent()){
+            throw new UnprocesableEntityException("Este jugador ya existe");
+        }
         return playerRepository.save(player);
     }
 

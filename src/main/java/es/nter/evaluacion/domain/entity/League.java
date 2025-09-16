@@ -14,18 +14,18 @@ import java.util.List;
 @AllArgsConstructor
 
 @Entity
-@Table(name = "league")
+@Table(name = "leagues")
 public class League {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "league_id")
     private Long id;
-    @Column(name = "name", nullable = false)
+    @Column(name = "name",unique = true, nullable = false)
     private String name;
     @Column(name = "description")
     private String description;
-    @Column(name = "status", insertable = false)
+    @Column(name = "status", columnDefinition = "boolean default false")
     private boolean active;
 
     @OneToMany(mappedBy = "league")

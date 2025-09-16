@@ -13,8 +13,6 @@ public class LeagueInputDto {
     @NotBlank(message = "Campo name requerido")
     private String name;
     private String description;
-    //todo añadir valor por defecto false
-    @NotBlank
     private boolean active;
 
     private List<TeamInputDto> teams;

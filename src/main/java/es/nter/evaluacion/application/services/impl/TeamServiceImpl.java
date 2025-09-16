@@ -2,6 +2,7 @@ package es.nter.evaluacion.application.services.impl;
 
 import es.nter.evaluacion.application.mappers.TeamMapper;
 import es.nter.evaluacion.application.services.TeamService;
+import es.nter.evaluacion.domain.entity.League;
 import es.nter.evaluacion.domain.entity.Player;
 import es.nter.evaluacion.domain.entity.Team;
 import es.nter.evaluacion.execption.NotFounException;
@@ -49,6 +50,13 @@ public class TeamServiceImpl implements TeamService {
         if(Objects.equals(players.getTeam(),team)){
                 playerService.addTeamToPlayer(players.getId(), team);}
         return team;
+    }
+
+    @Override
+    public Team addLeagueToTeam(Long id, League league) {
+        Team team= getTeamById(id);
+        team.setLeague(league);
+        return teamRepository.save(team);
     }
 
     @Override

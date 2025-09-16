@@ -1,6 +1,5 @@
 package es.nter.evaluacion.domain.entity;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -15,7 +14,8 @@ import java.util.List;
 @AllArgsConstructor
 
 @Entity
-@Table(name = "players")
+@Table(name = "players", uniqueConstraints = {@UniqueConstraint(
+        name = "uK_name_surname", columnNames = {"name", "surname"})})
 public class Player {
 
     @Id
