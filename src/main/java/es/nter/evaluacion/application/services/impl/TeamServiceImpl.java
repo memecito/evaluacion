@@ -39,7 +39,6 @@ public class TeamServiceImpl implements TeamService {
         if (teamRepository.findTeamByName(team.getName()).isPresent()) {
             throw new UnprocesableEntityException("El quipo ya existe");
         }
-
         return teamRepository.save(team);
     }
 
