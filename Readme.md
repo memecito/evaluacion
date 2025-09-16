@@ -24,6 +24,11 @@ _Menciona las herramientas que utilizaste para crear tu proyecto_
 * [Spring Boot](http://www.spring.io/quickstart) - El framework web usado
 * [Maven](https://maven.apache.org/) - Manejador de dependencias
 
+## Prueba el codigo con PostMan
+
+* [PostMan](https://antonio-7505848.postman.co/workspace/Antonio's-Workspace~ff321452-3ed6-4d01-8f5b-7bb296e96e02/collection/46580880-16f09df0-b651-4893-93bb-0e626783534d?action=share&source=copy-link&creator=46580880) -Enlace de PostMan
+* Tamebien esta disponible el json en la carpeta _resources_
+
 ## Autores ✒️
 
 _Menciona a todos aquellos que ayudaron a levantar el proyecto desde sus inicios_

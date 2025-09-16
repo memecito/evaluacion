@@ -1,0 +1,188 @@
+{
+	"info": {
+		"_postman_id": "16f09df0-b651-4893-93bb-0e626783534d",
+		"name": "Evaluacion",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "46580880",
+		"_collection_link": "https://antonio-7505848.postman.co/workspace/Antonio's-Workspace~ff321452-3ed6-4d01-8f5b-7bb296e96e02/collection/46580880-16f09df0-b651-4893-93bb-0e626783534d?action=share&source=collection_link&creator=46580880"
+	},
+	"item": [
+		{
+			"name": "Players",
+			"item": []
+		},
+		{
+			"name": "Teams",
+			"item": [
+				{
+					"name": "get by Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/teams/7",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"teams",
+								"7"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "League",
+			"item": [
+				{
+					"name": "Get All",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/leagues",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"leagues"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get by Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/leagues/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"leagues",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Legue",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"name\",\r\n    \"active\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/leagues",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"leagues"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"name\": \"La Liga EA Sports\",\r\n    \"description\": \"Primera división del fútbol profesional en España.\",\r\n    \"active\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/leagues/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"leagues",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{base_url}}/leagues/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"leagues",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Team",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n        \"id\": 11,\r\n        \"name\": \"Manchester City\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/leagues/1/teams",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"leagues",
+								"1",
+								"teams"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "",
+			"type": "default"
+		}
+	]
+}
