@@ -14,7 +14,8 @@ public interface LeagueMapper {
     League toModel(LeagueInputDto leagueInputDto);
     //OUPUT
 
-    LeagueOuputDto toDto (League league);
+    LeagueOuputDto toDto(League league);
+
     LeagueOuputDtoMini toDtoMini(League league);
 
     //UPDATE

@@ -39,10 +39,9 @@ public class PlayerServiceImpl implements PlayerService {
     }
 
 
-
     @Override
     public Player createPlayer(Player player) {
-        if(playerRepository.findPlayerByNameAndSurname (player.getName(),player.getSurname()).isPresent()){
+        if (playerRepository.findPlayerByNameAndSurname(player.getName(), player.getSurname()).isPresent()) {
             throw new UnprocesableEntityException("Este jugador ya existe");
         }
         return playerRepository.save(player);
@@ -52,7 +51,7 @@ public class PlayerServiceImpl implements PlayerService {
     public Player addTeamToPlayer(Long id, Team team) {
 
         Player player = getPlayerById(id);
-        if(!teamService.exist(team.getId())){
+        if (!teamService.exist(team.getId())) {
             throw new UnprocesableEntityException("El equipo no existe");
         }
         player.setTeam(team);
