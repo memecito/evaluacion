@@ -11,7 +11,6 @@ import lombok.Setter;
 @Setter
 public class TeamInputDto {
 
-    private Long id;
     @NotBlank(message = "hace falta el nombre")
     private String name;
 

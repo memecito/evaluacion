@@ -2,11 +2,13 @@ package es.nter.evaluacion.application.services.impl;
 
 import es.nter.evaluacion.application.mappers.PlayerMapper;
 import es.nter.evaluacion.application.services.PlayerService;
+import es.nter.evaluacion.application.services.TeamService;
 import es.nter.evaluacion.domain.entity.Player;
 import es.nter.evaluacion.domain.entity.Team;
 import es.nter.evaluacion.execption.NotFounException;
 import es.nter.evaluacion.execption.UnprocesableEntityException;
 import es.nter.evaluacion.repository.PlayerRepository;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
@@ -23,7 +25,7 @@ public class PlayerServiceImpl implements PlayerService {
 
     @Lazy
     @Autowired
-    private TeamServiceImpl teamService;
+    private TeamService teamService;
 
 
     @Override
@@ -40,6 +42,7 @@ public class PlayerServiceImpl implements PlayerService {
 
 
     @Override
+    @Transactional
     public Player createPlayer(Player player) {
         if (playerRepository.findPlayerByNameAndSurname(player.getName(), player.getSurname()).isPresent()) {
             throw new UnprocesableEntityException("Este jugador ya existe");
@@ -48,6 +51,7 @@ public class PlayerServiceImpl implements PlayerService {
     }
 
     @Override
+    @Transactional
     public Player addTeamToPlayer(Long id, Team team) {
 
         Player player = getPlayerById(id);
@@ -60,12 +64,14 @@ public class PlayerServiceImpl implements PlayerService {
 
 
     @Override
+    @Transactional
     public Player updatePlayer(Long id, Player player) {
         Player playerOld = getPlayerById(id);
         return playerMapper.update(playerOld, player);
     }
 
     @Override
+    @Transactional
     public void deletePlayer(Long id) {
         if (playerRepository.findById(id).isEmpty()) {
             throw new UnprocesableEntityException("El jugador no se encuentra en la base de datos");

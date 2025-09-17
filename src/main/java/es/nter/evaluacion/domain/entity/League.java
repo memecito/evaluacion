@@ -6,7 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -29,5 +30,5 @@ public class League {
     private boolean active;
 
     @OneToMany(mappedBy = "league")
-    private List<Team> teams;
+    private Set<Team> teams= new HashSet<>();
 }

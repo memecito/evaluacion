@@ -2,16 +2,16 @@ package es.nter.evaluacion.presentation.controller;
 
 import es.nter.evaluacion.application.mappers.PlayerMapper;
 import es.nter.evaluacion.application.mappers.TeamMapper;
-import es.nter.evaluacion.application.services.impl.PlayerServiceImpl;
-import es.nter.evaluacion.presentation.dto.teams.TeamInputDto;
+import es.nter.evaluacion.application.services.PlayerService;
+import es.nter.evaluacion.presentation.dto.ReturnMessage;
 import es.nter.evaluacion.presentation.dto.players.PlayerInputDto;
 import es.nter.evaluacion.presentation.dto.players.PlayerOuputDto;
 import es.nter.evaluacion.presentation.dto.players.PlayerOuputDtoMini;
+import es.nter.evaluacion.presentation.dto.teams.TeamInputDto;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,7 +23,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class PlayerController {
 
-    private final PlayerServiceImpl playerService;
+    private final PlayerService playerService;
     private final PlayerMapper playerMapper;
 
     private final TeamMapper teamMapper;
@@ -64,11 +64,11 @@ public class PlayerController {
 
     @DeleteMapping("/{id}")
     @Transactional
-    public ResponseEntity<String> deleted(@PathVariable Long id) {
+    public ResponseEntity<ReturnMessage> deleted(@PathVariable Long id) {
         playerService.deletePlayer(id);
-        return ResponseEntity.ok("Jugador eliminado");
-
+        return ResponseEntity.ok(ReturnMessage.builder()
+                .status(HttpStatus.OK.value())
+                .message("Entidad borrada")
+                .build());
     }
-
-
 }

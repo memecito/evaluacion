@@ -2,7 +2,8 @@ package es.nter.evaluacion.presentation.controller;
 
 import es.nter.evaluacion.application.mappers.LeagueMapper;
 import es.nter.evaluacion.application.mappers.TeamMapper;
-import es.nter.evaluacion.application.services.impl.LeagueServiceImpl;
+import es.nter.evaluacion.application.services.LeagueService;
+import es.nter.evaluacion.presentation.dto.ReturnMessage;
 import es.nter.evaluacion.presentation.dto.league.LeagueInputDto;
 import es.nter.evaluacion.presentation.dto.league.LeagueOuputDto;
 import es.nter.evaluacion.presentation.dto.league.LeagueOuputDtoMini;
@@ -22,7 +23,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class LeaguerController {
 
-    private final LeagueServiceImpl leagueService;
+    private final LeagueService leagueService;
     private final LeagueMapper leagueMapper;
 
     private final TeamMapper teamMapper;
@@ -71,10 +72,11 @@ public class LeaguerController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> delete(@PathVariable Long id) {
+    public ResponseEntity<ReturnMessage> delete(@PathVariable Long id) {
         leagueService.deletePlayer(id);
-
-        // todo crear un objeto para mandar el mensaje...
-        return ResponseEntity.ok().body("Liga borrada");
+        return ResponseEntity.ok(ReturnMessage.builder()
+                .status(HttpStatus.OK.value())
+                .message("Entidad borrada")
+                .build());
     }
 }

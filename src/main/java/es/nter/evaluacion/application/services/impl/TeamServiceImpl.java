@@ -11,6 +11,7 @@ import es.nter.evaluacion.execption.UnprocesableEntityException;
 import es.nter.evaluacion.repository.TeamRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Objects;
@@ -36,6 +37,7 @@ public class TeamServiceImpl implements TeamService {
     }
 
     @Override
+    @Transactional
     public Team createTeam(Team team) {
         if (teamRepository.findTeamByName(team.getName()).isPresent()) {
             throw new UnprocesableEntityException("El quipo ya existe");
@@ -44,6 +46,7 @@ public class TeamServiceImpl implements TeamService {
     }
 
     @Override
+    @Transactional
     public Team addPlayerToTeam(Long id, Player players) {
 
         Team team = getTeamById(id);
@@ -54,6 +57,7 @@ public class TeamServiceImpl implements TeamService {
     }
 
     @Override
+    @Transactional
     public Team addLeagueToTeam(Long id, League league) {
         Team team = getTeamById(id);
         team.setLeague(league);
@@ -61,6 +65,7 @@ public class TeamServiceImpl implements TeamService {
     }
 
     @Override
+    @Transactional
     public Team updateTeam(Long id, Team team) {
         Team teamOld = getTeamById(id);
         if (Objects.equals(teamOld, team)) {
@@ -70,6 +75,7 @@ public class TeamServiceImpl implements TeamService {
     }
 
     @Override
+    @Transactional
     public void deleteTeam(Long id) {
         //No es falta de consistencia en la logica, es otra forma de hacerlo difernete a Player
         if (!getTeamById(id).getPlayers().isEmpty()) {

@@ -6,7 +6,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -30,10 +32,13 @@ public class Player {
     private int age;
     @Column(name = "email", nullable = false)
     private String email;
+    @ElementCollection
+    @CollectionTable(name = "player_positions",
+    joinColumns = @JoinColumn(name="player_id"))
     @Column(name = "position")
-    private List<String> positions;
+    private Set<String> positions= new HashSet<>();
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "team_id")
     private Team team;
 

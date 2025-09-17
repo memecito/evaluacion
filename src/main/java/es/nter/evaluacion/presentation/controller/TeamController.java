@@ -3,7 +3,8 @@ package es.nter.evaluacion.presentation.controller;
 import es.nter.evaluacion.application.mappers.LeagueMapper;
 import es.nter.evaluacion.application.mappers.PlayerMapper;
 import es.nter.evaluacion.application.mappers.TeamMapper;
-import es.nter.evaluacion.application.services.impl.TeamServiceImpl;
+import es.nter.evaluacion.application.services.TeamService;
+import es.nter.evaluacion.presentation.dto.ReturnMessage;
 import es.nter.evaluacion.presentation.dto.league.LeagueInputDto;
 import es.nter.evaluacion.presentation.dto.teams.TeamInputDto;
 import es.nter.evaluacion.presentation.dto.teams.TeamOuputDto;
@@ -24,7 +25,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class TeamController {
 
-    private final TeamServiceImpl teamService;
+    private final TeamService teamService;
     private final TeamMapper teamMapper;
 
     private final PlayerMapper playerMapper;
@@ -72,9 +73,12 @@ public class TeamController {
 
     @DeleteMapping("/{id}")
     @Transactional
-    public ResponseEntity<String> deleted(@PathVariable Long id) {
+    public ResponseEntity<ReturnMessage> deleted(@PathVariable Long id) {
         teamService.deleteTeam(id);
-        return ResponseEntity.ok("Equipo eliminado");
+        return ResponseEntity.ok(ReturnMessage.builder()
+                .status(HttpStatus.OK.value())
+                .message("Entidad borrada")
+                .build());
     }
 
 }

@@ -12,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
 
 @Service
 @RequiredArgsConstructor
@@ -54,7 +55,7 @@ public class LeagueServiceImpl implements LeagueService {
         League league = getLeagueById(id);
         Team team1 = teamService.getTeamById(team.getId());
         team1.setLeague(getLeagueById(id));
-        List<Team> teams = league.getTeams();
+        Set<Team> teams = league.getTeams();
         teams.add(team1);
         league.setTeams(teams);
         return league;

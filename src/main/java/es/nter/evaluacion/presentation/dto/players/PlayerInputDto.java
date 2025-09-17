@@ -14,7 +14,6 @@ import java.util.List;
 @Setter
 public class PlayerInputDto {
 
-    private Long id;
     @NotBlank(message = "Campo Name requerido")
     private String name;
     @NotBlank(message = "Campo Surname requerido")
