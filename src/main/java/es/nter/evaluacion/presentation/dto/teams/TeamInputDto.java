@@ -12,7 +12,7 @@ import lombok.Setter;
 public class TeamInputDto {
 
     private Long id;
-    @NotBlank
+    @NotBlank(message = "hace falta el nombre")
     private String name;
 
 }

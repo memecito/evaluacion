@@ -52,7 +52,6 @@ public class LeaguerController {
     }
 
     @PostMapping("/{id}/teams")
-    @Transactional
     public ResponseEntity<LeagueOuputDto> addTeamsToLeage(@PathVariable Long id,
                                                           @Valid @RequestBody TeamInputDto teamInputDto) {
         return ResponseEntity.status(HttpStatus.CREATED)
@@ -60,23 +59,22 @@ public class LeaguerController {
     }
 
     @PutMapping("/{id}")
-    @Transactional
     public ResponseEntity<LeagueOuputDto> update(@PathVariable Long id, @Valid @RequestBody LeagueInputDto leagueInputDto) {
         return ResponseEntity.ok(leagueMapper.toDto(
                 leagueService.updateLeague(id, leagueMapper.toModel(leagueInputDto))));
     }
 
     @PutMapping("/{id}/actived")
-    @Transactional
     public ResponseEntity<LeagueOuputDto> activedLeague(@PathVariable Long id) {
         return ResponseEntity.ok(leagueMapper.toDto(
                 leagueService.activedLeague(id)));
     }
 
     @DeleteMapping("/{id}")
-    @Transactional
     public ResponseEntity<String> delete(@PathVariable Long id) {
         leagueService.deletePlayer(id);
-        return ResponseEntity.ok("Liga borrada");
+
+        // todo crear un objeto para mandar el mensaje...
+        return ResponseEntity.ok().body("Liga borrada");
     }
 }

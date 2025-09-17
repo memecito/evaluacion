@@ -2,6 +2,7 @@ package es.nter.evaluacion.application.services.impl;
 
 import es.nter.evaluacion.application.mappers.LeagueMapper;
 import es.nter.evaluacion.application.services.LeagueService;
+import es.nter.evaluacion.application.services.TeamService;
 import es.nter.evaluacion.domain.entity.League;
 import es.nter.evaluacion.domain.entity.Team;
 import es.nter.evaluacion.execption.NotFounException;
@@ -19,7 +20,7 @@ public class LeagueServiceImpl implements LeagueService {
     private final LeagueRepository leagueRepository;
     private final LeagueMapper leagueMapper;
 
-    private final TeamServiceImpl teamService;
+    private final TeamService teamService;
 
     @Override
     public List<League> getAllLeagues() {

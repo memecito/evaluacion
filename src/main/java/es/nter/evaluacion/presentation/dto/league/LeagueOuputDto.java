@@ -1,6 +1,8 @@
 package es.nter.evaluacion.presentation.dto.league;
 
 import es.nter.evaluacion.presentation.dto.teams.TeamInputDto;
+import es.nter.evaluacion.presentation.dto.teams.TeamOuputDto;
+import es.nter.evaluacion.presentation.dto.teams.TeamOuputDtoMini;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,6 +16,6 @@ public class LeagueOuputDto {
     private String description;
     private boolean active;
 
-    private List<TeamInputDto> teams;
+    private List<TeamOuputDtoMini> teams;
 
 }

@@ -66,8 +66,8 @@ public class TeamController {
 
     @PutMapping("/{id}")
     @Transactional
-    public ResponseEntity<TeamOuputDto> update(@PathVariable Long id, @Valid @RequestBody TeamInputDto teamInputDto) {
-        return ResponseEntity.ok(teamMapper.toDto(teamService.updateTeam(id, teamMapper.toModel(teamInputDto))));
+    public ResponseEntity<TeamOuputDtoMini> update(@PathVariable Long id, @Valid @RequestBody TeamInputDto teamInputDto) {
+        return ResponseEntity.ok(teamMapper.toDtoMini(teamService.updateTeam(id, teamMapper.toModel(teamInputDto))));
     }
 
     @DeleteMapping("/{id}")

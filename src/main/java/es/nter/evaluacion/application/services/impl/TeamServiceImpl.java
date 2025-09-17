@@ -1,6 +1,7 @@
 package es.nter.evaluacion.application.services.impl;
 
 import es.nter.evaluacion.application.mappers.TeamMapper;
+import es.nter.evaluacion.application.services.PlayerService;
 import es.nter.evaluacion.application.services.TeamService;
 import es.nter.evaluacion.domain.entity.League;
 import es.nter.evaluacion.domain.entity.Player;
@@ -20,7 +21,7 @@ public class TeamServiceImpl implements TeamService {
     private final TeamRepository teamRepository;
     private final TeamMapper teamMapper;
 
-    private final PlayerServiceImpl playerService;
+    private final PlayerService playerService;
 
     @Override
     public List<Team> getAllTeam() {

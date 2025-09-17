@@ -28,5 +28,5 @@ public class PlayerInputDto {
     private String email;
     private List<String> positions;
 
-    private TeamInputDto team;
+    //private TeamInputDto team;
 }
